@@ -201,27 +201,6 @@ echo -ne "
 ------------------------------------------------------------------------
 "
 }
-# @description This function will handle file systems. At this movement we are handling only
-# btrfs and ext4. Others will be added in future.
-filesystem () {
-echo -ne "
-Please Select your file system for both boot and root
-"
-options=("btrfs" "ext4" "luks" "exit")
-select_option $? 1 "${options[@]}"
-
-case $? in
-0) set_option FS btrfs;;
-1) set_option FS ext4;;
-2) 
-    set_password "LUKS_PASSWORD"
-    set_option FS luks
-    ;;
-3) exit ;;
-*) echo "Wrong option please select again"; filesystem;;
-esac
-}
-# @description Detects and sets timezone. 
 timezone () {
 # Added this from arch wiki https://wiki.archlinux.org/title/System_time
 time_zone="$(curl --fail https://ipapi.co/timezone)"
@@ -277,28 +256,6 @@ esac
 }
 
 # @description Disk selection for drive to be used with installation.
-diskpart () {
-echo -ne "
-------------------------------------------------------------------------
-    THIS WILL FORMAT AND DELETE ALL DATA ON THE DISK
-    Please make sure you know what you are doing because
-    after formating your disk there is no way to get data back
-------------------------------------------------------------------------
-
-"
-
-PS3='
-Select the disk to install on: '
-options=($(lsblk -n --output TYPE,KNAME,SIZE | awk '$1=="disk"{print "/dev/"$2"|"$3}'))
-
-select_option $? 1 "${options[@]}"
-disk=${options[$?]%|*}
-
-echo -e "\n${disk%|*} selected \n"
-    set_option DISK ${disk%|*}
-
-drivessd
-}
 
 # @description Gather username and password to be used for installation. 
 userinfo () {
@@ -318,27 +275,7 @@ aurhelper () {
   aur_helper=${options[$?]}
   set_option AUR_HELPER $aur_helper
 }
-
-# @description Choose Desktop Environment
-desktopenv () {
-  # Let the user choose Desktop Enviroment from predefined list
-  echo -ne "Please select your desired Desktop Enviroment:\n"
-  options=( `for f in pkg-files/*.txt; do echo "$f" | sed -r "s/.+\/(.+)\..+/\1/;/pkgs/d"; done` )
-  select_option $? 4 "${options[@]}"
-  desktop_env=${options[$?]}
-  set_option DESKTOP_ENV $desktop_env
-}
-
 # @description Choose whether to do full or minimal installation. 
-installtype () {
-  echo -ne "Please select type of installation:\n\n
-  Full install: Installs full featured desktop enviroment, with added apps and themes needed for everyday use\n
-  Minimal Install: Installs only apps few selected apps to get you started\n"
-  options=(FULL MINIMAL)
-  select_option $? 4 "${options[@]}"
-  install_type=${options[$?]}
-  set_option INSTALL_TYPE $install_type
-}
 
 # More features in future
 # language (){}
@@ -348,9 +285,6 @@ background_checks
 clear
 logo
 userinfo
-clear
-logo
-desktopenv
 # Set fixed options that installation uses if user choses server installation
 set_option INSTALL_TYPE MINIMAL
 set_option AUR_HELPER NONE
@@ -362,12 +296,6 @@ if [[ ! $desktop_env == server ]]; then
   logo
   installtype
 fi
-clear
-logo
-diskpart
-clear
-logo
-filesystem
 clear
 logo
 timezone
