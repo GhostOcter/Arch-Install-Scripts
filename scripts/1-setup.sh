@@ -16,7 +16,7 @@ echo -ne "
                         SCRIPTHOME: ArchTitus
 -------------------------------------------------------------------------
 "
-source $HOME/ArchTitus/configs/setup.conf
+source $HOME/Arch-Install-Scripts/configs/setup.conf
 echo -ne "
 -------------------------------------------------------------------------
                     Network Setup 

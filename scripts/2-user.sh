@@ -18,7 +18,7 @@ echo -ne "
 
 Installing AUR Softwares
 "
-source $HOME/ArchTitus/configs/setup.conf
+source $HOME/Arch-Install-Scripts/configs/setup.conf
 pacman -S --noconfirm --needed yay
 
 cat ~/ArchTitus/pkg-files/pgks.txt | while read line
