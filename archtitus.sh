@@ -30,7 +30,7 @@ echo -ne "
     if [[ ! $DESKTOP_ENV == server ]]; then
       ( arch-chroot /mnt /usr/bin/runuser -u $USERNAME -- /home/$USERNAME/Arch-Install-Scripts/scripts/2-user.sh )|& tee 2-user.log
     fi
-    ( arch-chroot /mnt SCRIPTS_DIR/3-post-setup.sh )|& tee 3-post-setup.log
+    ( arch-chroot /mnt /home/$USERNAME/Arch-Install-Scripts/scripts/3-post-setup.sh )|& tee 3-post-setup.log
     cp -v *.log /mnt/home/$USERNAME
 
 echo -ne "
