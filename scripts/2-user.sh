@@ -21,7 +21,7 @@ Installing AUR Softwares
 source $HOME/Arch-Install-Scripts/configs/setup.conf
 pacman -S --noconfirm --needed yay
 
-cat ~/ArchTitus/pkg-files/pgks.txt | while read line
+cat ~/Arch-Install-Scripts/pkg-files/pgks.txt | while read line
 do
   echo "INSTALLING: ${line}"
   sudo yay -S --noconfirm --needed ${line}

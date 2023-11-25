@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+Arch-Install-Scripts#!/usr/bin/env bash
 #github-action genshdoc
 #
 # @file Startup
@@ -184,7 +184,7 @@ select_option() {
 
     return $(( $active_col + $active_row * $colmax ))
 }
-# @description Displays ArchTitus logo
+# @description Displays Arch-Install-Scripts logo
 # @noargs
 logo () {
 # This will be shown on every set as user is progressing

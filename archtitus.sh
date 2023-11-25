@@ -6,8 +6,8 @@
 
 # Find the name of the folder the scripts are in
 set -a
-SCRIPT_DIR=$HOME/Arch-Install-Scripts
-SCRIPTS_DIR=$HOME/Arch-Install-Scripts/scripts
+SCRIPT_DIR=/root/Arch-Install-Scripts
+SCRIPTS_DIR=$SCRIPT_DIR/scripts
 CONFIGS_DIR=$SCRIPT_DIR/configs
 set +a
 echo -ne "
