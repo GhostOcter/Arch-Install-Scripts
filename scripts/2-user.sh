@@ -27,6 +27,13 @@ do
   sudo yay -S --noconfirm --needed ${line}
 done
 
+echo "Installing custom config"
+cd ~
+git clone "https://github.com/GhostOcter/dotfiles"
+mv -f dotfiles/* .
+rm -rf dotfiles
+echo "Done !"
+
 export PATH=$PATH:~/.local/bin
 echo -ne "
 -------------------------------------------------------------------------
