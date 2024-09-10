@@ -21,7 +21,6 @@ dbus-python
 discord
 dosfstools
 swaync
-dxvk-bin
 easyeffects
 efibootmgr
 evince
