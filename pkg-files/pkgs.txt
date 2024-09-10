@@ -31,7 +31,6 @@ freetype2
 gamemode
 gcc
 git
-gparted
 grim
 grimblast-git
 grub
