@@ -13,7 +13,6 @@ biber
 blueman
 bluez
 bluez-utils
-bridge-utils
 brightnessctl
 btop
 celluloid
