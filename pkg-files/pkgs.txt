@@ -35,9 +35,6 @@ grim
 grimblast-git
 grub
 grub-customizer
-gst-libav
-gst-plugins-good
-gst-plugins-ugly
 gtk4
 htop
 hyprland
