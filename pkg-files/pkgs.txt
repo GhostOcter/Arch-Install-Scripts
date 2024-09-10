@@ -27,7 +27,6 @@ evince
 exfat-utils
 ffmpeg
 ffmpegthumbnailer
-file-roller
 freetype2
 gamemode
 gcc
